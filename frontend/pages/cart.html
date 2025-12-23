@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng - QHBD Fashion</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="top-left">
+                        <span>Miễn phí vận chuyển cho đơn hàng trên 2.000.000₫</span>
+                    </div>
+                    <div class="top-right">
+                        <a href="#"><i class="fas fa-phone"></i> Hotline: 0988419285</a>
+                        <a href="#"><i class="fas fa-envelope"></i> thoitrang@qhbdfashion.vn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="index.html">QHBD</a>
+                    </div>
+
+                    <nav class="nav-menu">
+                        <ul>
+                            <li><a href="index.html">Trang Chủ</a></li>
+                            <li><a href="products.html?category=men">Nam</a></li>
+                            <li><a href="products.html?category=women">Nữ</a></li>
+                            <li><a href="products.html?category=accessories">Phụ Kiện</a></li>
+                            <li><a href="products.html?category=new">Hàng Mới</a></li>
+                            <li><a href="products.html?category=sale">Sale</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="header-actions">
+                        <div class="search-box">
+                            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+                            <button id="searchBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                        <a href="login.html" class="action-btn" id="userBtn">
+                            <i class="fas fa-user"></i>
+                            <span id="userName"></span>
+                        </a>
+                        <a href="cart.html" class="action-btn cart-btn">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Page -->
+    <section class="cart-page">
+        <div class="container">
+            <h1 style="margin-bottom: 40px;">Giỏ Hàng Của Bạn</h1>
+            <div id="cartContent">
+                <p style="text-align: center; padding: 40px;">Đang tải...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>QHBD Fashion</h3>
+                    <p>Thời trang cao cấp cho người thành đạt.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Thông Tin</h4>
+                    <ul>
+                        <li><a href="#">Về Chúng Tôi</a></li>
+                        <li><a href="#">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ Trợ</h4>
+                    <ul>
+                        <li><a href="#">Chính Sách Đổi Trả</a></li>
+                        <li><a href="#">Hướng Dẫn Mua Hàng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên Hệ</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 55 Đường Giải Phóng, Hoàng Mai, Hà Nội</li>
+                        <li><i class="fas fa-phone"></i> 0988419285</li>
+                        <li><i class="fas fa-envelope"></i> thoitrang@qhbdfashion.vn</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 QHBD Fashion. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/api.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        // Render Cart với ảnh
+        function renderCart() {
+            const cart = getCart();
+            const cartContent = document.getElementById('cartContent');
+            
+            console.log('Cart data:', cart);
+            
+            if (cart.length === 0) {
+                cartContent.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h2>Giỏ Hàng Trống</h2>
+                        <p>Bạn chưa có sản phẩm nào trong giỏ hàng</p>
+                        <a href="products.html" class="btn-primary" style="margin-top: 20px;">Tiếp Tục Mua Sắm</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal >= 2000000 ? 0 : 50000;
+            const total = subtotal + shipping;
+            
+            cartContent.innerHTML = `
+                <div class="cart-container">
+                    <div class="cart-items">
+                        <h2 style="margin-bottom: 20px;">Sản Phẩm (${cart.length})</h2>
+                        ${cart.map(item => `
+                            <div class="cart-item">
+                                <div class="cart-item-image">
+                                    ${item.image 
+                                        ? `<img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">`
+                                        : `<i class="fas fa-tshirt" style="font-size: 40px; color: #ddd;"></i>`
+                                    }
+                                </div>
+                                <div class="cart-item-details">
+                                    <h3>${item.name}</h3>
+                                    <p class="cart-item-price">${formatPrice(item.price)}</p>
+                                    <div class="quantity-controls">
+                                        <button onclick="changeQuantity('${item.productId}', ${item.quantity - 1})">-</button>
+                                        <span>${item.quantity}</span>
+                                        <button onclick="changeQuantity('${item.productId}', ${item.quantity + 1})">+</button>
+                                    </div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <p style="font-size: 20px; font-weight: 700; color: #daa520; margin-bottom: 10px;">
+                                        ${formatPrice(item.price * item.quantity)}
+                                    </p>
+                                    <button class="remove-item" onclick="removeItem('${item.productId}')">
+                                        <i class="fas fa-trash"></i> Xóa
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="cart-summary">
+                        <h2>Tổng Đơn Hàng</h2>
+                        <div class="summary-row">
+                            <span>Tạm tính:</span>
+                            <span>${formatPrice(subtotal)}</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Phí vận chuyển:</span>
+                            <span>${shipping === 0 ? 'Miễn phí' : formatPrice(shipping)}</span>
+                        </div>
+                        ${subtotal < 2000000 ? `
+                            <p style="font-size: 13px; color: #666; margin: 10px 0;">
+                                Thêm ${formatPrice(2000000 - subtotal)} để được miễn phí vận chuyển
+                            </p>
+                        ` : ''}
+                        <div class="summary-row total">
+                            <span>Tổng cộng:</span>
+                            <span style="color: #daa520;">${formatPrice(total)}</span>
+                        </div>
+                        <button class="checkout-btn" onclick="goToCheckout()">
+                            Tiến Hành Thanh Toán
+                        </button>
+                        <a href="products.html" class="btn-secondary" style="display: block; text-align: center; margin-top: 15px;">
+                            Tiếp Tục Mua Sắm
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function changeQuantity(productId, newQuantity) {
+            if (newQuantity < 1) {
+                if (confirm('Bạn có muốn xóa sản phẩm này khỏi giỏ hàng?')) {
+                    removeFromCart(productId);
+                    renderCart();
+                }
+            } else {
+                updateQuantity(productId, newQuantity);
+                renderCart();
+            }
+        }
+        
+        function removeItem(productId) {
+            if (confirm('Bạn có chắc muốn xóa sản phẩm này?')) {
+                removeFromCart(productId);
+                renderCart();
+                showNotification('Đã xóa sản phẩm khỏi giỏ hàng', 'success');
+            }
+        }
+        
+        function goToCheckout() {
+            const user = getCurrentUser();
+            if (!user) {
+                showNotification('Vui lòng đăng nhập để tiếp tục', 'error');
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1500);
+                return;
+            }
+            window.location.href = 'checkout.html';
+        }
+        
+        // Initial render
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Cart page loaded');
+            renderCart();
+        });
+    </script>
+</body>
+</html>

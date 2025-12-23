@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập - QHBD Fashion</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="top-left">
+                        <span>Miễn phí vận chuyển cho đơn hàng trên 2.000.000₫</span>
+                    </div>
+                    <div class="top-right">
+                        <a href="#"><i class="fas fa-phone"></i> Hotline: 0988419285</a>
+                        <a href="#"><i class="fas fa-envelope"></i> thoitrang@qhbdfashion.vn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="index.html">QHBD</a>
+                    </div>
+
+                    <nav class="nav-menu">
+                        <ul>
+                            <li><a href="index.html">Trang Chủ</a></li>
+                            <li><a href="products.html?category=men">Nam</a></li>
+                            <li><a href="products.html?category=women">Nữ</a></li>
+                            <li><a href="products.html?category=accessories">Phụ Kiện</a></li>
+                            <li><a href="products.html?category=new">Hàng Mới</a></li>
+                            <li><a href="products.html?category=sale">Sale</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="header-actions">
+                        <div class="search-box">
+                            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+                            <button id="searchBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                        <a href="login.html" class="action-btn" id="userBtn">
+                            <i class="fas fa-user"></i>
+                            <span id="userName"></span>
+                        </a>
+                        <a href="cart.html" class="action-btn cart-btn">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Section -->
+    <section class="login-section">
+        <div class="login-container">
+            <div class="login-image">
+                <h2>Chào Mừng Đến Với QHBD</h2>
+                <p>Khám phá thế giới thời trang cao cấp với những bộ sưu tập độc quyền và phong cách sang trọng.</p>
+                <ul style="margin-top: 30px; line-height: 2;">
+                    <li><i class="fas fa-check" style="margin-right: 10px;"></i> Sản phẩm chất lượng cao</li>
+                    <li><i class="fas fa-check" style="margin-right: 10px;"></i> Giao hàng toàn quốc</li>
+                    <li><i class="fas fa-check" style="margin-right: 10px;"></i> Đổi trả trong 30 ngày</li>
+                    <li><i class="fas fa-check" style="margin-right: 10px;"></i> Hỗ trợ 24/7</li>
+                </ul>
+            </div>
+
+            <div class="login-form-container">
+                <h2>Tài Khoản Của Bạn</h2>
+                
+                <div class="form-tabs">
+                    <div class="tab active" onclick="switchTab('login')">Đăng Nhập</div>
+                    <div class="tab" onclick="switchTab('register')">Đăng Ký</div>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" style="display: block;">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" placeholder="Nhập email của bạn" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Mật Khẩu</label>
+                        <input type="password" id="loginPassword" placeholder="Nhập mật khẩu" required>
+                    </div>
+                    <div class="form-actions">
+                        <label class="remember-me">
+                            <input type="checkbox" id="rememberMe">
+                            <span>Ghi nhớ đăng nhập</span>
+                        </label>
+                        <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                    </div>
+                    <button type="submit" class="btn-submit">Đăng Nhập</button>
+                    <p style="text-align: center; margin-top: 20px; color: #999;">
+                        <small>Demo: admin@elite.com / 123456</small>
+                    </p>
+                </form>
+
+                <!-- Register Form -->
+                <form id="registerForm" style="display: none;">
+                    <div class="form-group">
+                        <label for="registerName">Họ Tên</label>
+                        <input type="text" id="registerName" placeholder="Nhập họ tên của bạn" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" placeholder="Nhập email của bạn" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Mật Khẩu</label>
+                        <input type="password" id="registerPassword" placeholder="Nhập mật khẩu" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerConfirmPassword">Xác Nhận Mật Khẩu</label>
+                        <input type="password" id="registerConfirmPassword" placeholder="Nhập lại mật khẩu" required>
+                    </div>
+                    <div class="form-actions">
+                        <label class="remember-me">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span>Tôi đồng ý với <a href="#" style="color: #daa520;">Điều khoản</a></span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-submit">Đăng Ký</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>QHBD Fashion</h3>
+                    <p>Thời trang cao cấp cho người thành đạt. Chúng tôi mang đến những sản phẩm chất lượng nhất với thiết kế tinh tế và sang trọng.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Thông Tin</h4>
+                    <ul>
+                        <li><a href="#">Về Chúng Tôi</a></li>
+                        <li><a href="#">Liên Hệ</a></li>
+                        <li><a href="#">Tuyển Dụng</a></li>
+                        <li><a href="#">Tin Tức</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ Trợ</h4>
+                    <ul>
+                        <li><a href="#">Chính Sách Đổi Trả</a></li>
+                        <li><a href="#">Hướng Dẫn Mua Hàng</a></li>
+                        <li><a href="#">Câu Hỏi Thường Gặp</a></li>
+                        <li><a href="#">Chính Sách Bảo Mật</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên Hệ</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 55 Đường Giải Phóng, Hoàng Mai, Hà Nội</li>
+                        <li><i class="fas fa-phone"></i> 0988419285</li>
+                        <li><i class="fas fa-envelope"></i> thoitrang@qhbdfashion.vn</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 QHBD Fashion. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+  <script src="../js/api.js"></script>
+    <script src="../js/app.js"></script>
+   <script>
+    function switchTab(tab) {
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const tabs = document.querySelectorAll('.tab');
+
+        tabs.forEach(t => t.classList.remove('active'));
+
+        if (tab === 'login') {
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+            tabs[0].classList.add('active');
+        } else {
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+            tabs[1].classList.add('active');
+        }
+    }
+
+    // Login
+    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+
+        try {
+            const result = await apiClient.login(email, password);
+
+            if (result.success) {
+                showNotification('Đăng nhập thành công!', 'success');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1000);
+            }
+        } catch (error) {
+            showNotification(error.message, 'error');
+        }
+    });
+
+    // Register
+    document.getElementById('registerForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('registerName').value;
+        const email = document.getElementById('registerEmail').value;
+        const password = document.getElementById('registerPassword').value;
+        const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+        if (password !== confirmPassword) {
+            showNotification('Mật khẩu xác nhận không khớp!', 'error');
+            return;
+        }
+
+        if (password.length < 6) {
+            showNotification('Mật khẩu phải có ít nhất 6 ký tự!', 'error');
+            return;
+        }
+
+        try {
+            const result = await apiClient.register(name, email, password);
+
+            if (result.success) {
+                showNotification('Đăng ký thành công!', 'success');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1000);
+            }
+        } catch (error) {
+            showNotification(error.message, 'error');
+        }
+    });
+</script>
+</body>
+</html>

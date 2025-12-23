@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán - QHBD Fashion</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="top-left">
+                        <span>Miễn phí vận chuyển cho đơn hàng trên 2.000.000₫</span>
+                    </div>
+                    <div class="top-right">
+                        <a href="#"><i class="fas fa-phone"></i> Hotline: 0988419285</a>
+                        <a href="#"><i class="fas fa-envelope"></i> thoitrang@qhbdfashion.vn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="index.html">QHBD</a>
+                    </div>
+
+                    <nav class="nav-menu">
+                        <ul>
+                            <li><a href="index.html">Trang Chủ</a></li>
+                            <li><a href="products.html?category=men">Nam</a></li>
+                            <li><a href="products.html?category=women">Nữ</a></li>
+                            <li><a href="products.html?category=accessories">Phụ Kiện</a></li>
+                            <li><a href="products.html?category=new">Hàng Mới</a></li>
+                            <li><a href="products.html?category=sale">Sale</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="header-actions">
+                        <div class="search-box">
+                            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+                            <button id="searchBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                        <a href="login.html" class="action-btn" id="userBtn">
+                            <i class="fas fa-user"></i>
+                            <span id="userName"></span>
+                        </a>
+                        <a href="cart.html" class="action-btn cart-btn">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Checkout Page -->
+    <section class="checkout-page">
+        <div class="container">
+            <h1 style="margin-bottom: 40px;">Thanh Toán</h1>
+
+            <div class="checkout-container">
+                <!-- Checkout Form -->
+                <div class="checkout-form">
+                    <form id="checkoutForm">
+                        <!-- Shipping Information -->
+                        <div class="form-section">
+                            <h3><i class="fas fa-shipping-fast"></i> Thông Tin Giao Hàng</h3>
+                            <div class="form-group">
+                                <label for="fullName">Họ và Tên *</label>
+                                <input type="text" id="fullName" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email *</label>
+                                    <input type="email" id="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Số Điện Thoại *</label>
+                                    <input type="tel" id="phone" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Địa Chỉ *</label>
+                                <input type="text" id="address" placeholder="Số nhà, tên đường" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">Thành Phố *</label>
+                                    <input type="text" id="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="district">Quận/Huyện *</label>
+                                    <input type="text" id="district" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="note">Ghi Chú Đơn Hàng</label>
+                                <textarea id="note" rows="3" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-family: inherit;"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div class="form-section">
+                            <h3><i class="fas fa-credit-card"></i> Phương Thức Thanh Toán</h3>
+                            <div class="payment-methods">
+                                <label class="payment-option selected">
+                                    <input type="radio" name="payment" value="cod" checked>
+                                    <div>
+                                        <i class="fas fa-money-bill-wave" style="font-size: 24px; color: #4CAF50;"></i>
+                                        <div style="margin-left: 15px;">
+                                            <strong>Thanh toán khi nhận hàng (COD)</strong>
+                                            <p style="font-size: 13px; color: #666; margin-top: 5px;">Thanh toán bằng tiền mặt khi nhận hàng</p>
+                                        </div>
+                                    </div>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="bank">
+                                    <div>
+                                        <i class="fas fa-university" style="font-size: 24px; color: #2196F3;"></i>
+                                        <div style="margin-left: 15px;">
+                                            <strong>Chuyển khoản ngân hàng</strong>
+                                            <p style="font-size: 13px; color: #666; margin-top: 5px;">Chuyển khoản qua Internet Banking</p>
+                                        </div>
+                                    </div>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="card">
+                                    <div>
+                                        <i class="fas fa-credit-card" style="font-size: 24px; color: #FF9800;"></i>
+                                        <div style="margin-left: 15px;">
+                                            <strong>Thanh toán thẻ quốc tế</strong>
+                                            <p style="font-size: 13px; color: #666; margin-top: 5px;">Visa, Mastercard, JCB</p>
+                                        </div>
+                                    </div>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="momo">
+                                    <div>
+                                        <i class="fas fa-wallet" style="font-size: 24px; color: #D82D8B;"></i>
+                                        <div style="margin-left: 15px;">
+                                            <strong>Ví MoMo</strong>
+                                            <p style="font-size: 13px; color: #666; margin-top: 5px;">Thanh toán qua ví điện tử MoMo</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <h2>Đơn Hàng Của Bạn</h2>
+                    <div class="order-items" id="orderItems">
+                        <!-- Order items will be loaded here -->
+                    </div>
+                    <div class="summary-row">
+                        <span>Tạm tính:</span>
+                        <span id="subtotalAmount">0₫</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Phí vận chuyển:</span>
+                        <span id="shippingAmount">0₫</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Tổng cộng:</span>
+                        <span style="color: #daa520;" id="totalAmount">0₫</span>
+                    </div>
+                    <button type="submit" form="checkoutForm" class="place-order-btn">
+                        <i class="fas fa-check-circle"></i> Đặt Hàng
+                    </button>
+                    <p style="font-size: 13px; color: #666; text-align: center; margin-top: 15px;">
+                        Bằng cách đặt hàng, bạn đồng ý với <a href="#" style="color: #daa520;">Điều khoản sử dụng</a> của chúng tôi.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3> Fashion</h3>
+                    <p>Thời trang cao cấp cho người thành đạt. Chúng tôi mang đến những sản phẩm chất lượng nhất với thiết kế tinh tế và sang trọng.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Thông Tin</h4>
+                    <ul>
+                        <li><a href="#">Về Chúng Tôi</a></li>
+                        <li><a href="#">Liên Hệ</a></li>
+                        <li><a href="#">Tuyển Dụng</a></li>
+                        <li><a href="#">Tin Tức</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ Trợ</h4>
+                    <ul>
+                        <li><a href="#">Chính Sách Đổi Trả</a></li>
+                        <li><a href="#">Hướng Dẫn Mua Hàng</a></li>
+                        <li><a href="#">Câu Hỏi Thường Gặp</a></li>
+                        <li><a href="#">Chính Sách Bảo Mật</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên Hệ</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 55 Đường Giải Phóng, Hoàng Mai, Hà Nội</li>
+                        <li><i class="fas fa-phone"></i> 0988419285</li>
+                        <li><i class="fas fa-envelope"></i> thoitrang@qhbdfashion.vn</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 QHBD Fashion. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+       <script src="../js/api.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        // Check if user is logged in
+        const user = getCurrentUser();
+        if (!user) {
+            showNotification('Vui lòng đăng nhập để tiếp tục', 'error');
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 1500);
+        }
+
+        // Load order summary
+        function loadOrderSummary() {
+            const cart = getCart();
+            
+            if (cart.length === 0) {
+                window.location.href = 'cart.html';
+                return;
+            }
+            
+            const orderItemsEl = document.getElementById('orderItems');
+            orderItemsEl.innerHTML = cart.map(item => `
+                <div class="order-item">
+                    <div>
+                        <strong>${item.name}</strong>
+                        <span style="color: #666; font-size: 14px;"> x${item.quantity}</span>
+                    </div>
+                    <span>${formatPrice(item.price * item.quantity)}</span>
+                </div>
+            `).join('');
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal >= 2000000 ? 0 : 50000;
+            const total = subtotal + shipping;
+            
+            document.getElementById('subtotalAmount').textContent = formatPrice(subtotal);
+            document.getElementById('shippingAmount').textContent = shipping === 0 ? 'Miễn phí' : formatPrice(shipping);
+            document.getElementById('totalAmount').textContent = formatPrice(total);
+        }
+
+        // Pre-fill user information
+        if (user) {
+            document.getElementById('fullName').value = user.name || '';
+            document.getElementById('email').value = user.email || '';
+        }
+
+        // Payment method selection
+        document.querySelectorAll('.payment-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        // Handle checkout form submission
+      document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = {
+        shippingInfo: {
+            fullName: document.getElementById('fullName').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            address: document.getElementById('address').value,
+            city: document.getElementById('city').value,
+            district: document.getElementById('district').value,
+            note: document.getElementById('note').value
+        },
+        paymentMethod: document.querySelector('input[name="payment"]:checked').value
+    };
+    
+   try {
+        const result = await createOrder(formData); // Thêm await ở đây
+        if (result.success) {
+            showNotification('Đặt hàng thành công!', 'success');
+            clearCart(); // Xóa giỏ hàng cục bộ
+            setTimeout(() => { window.location.href = 'index.html'; }, 2000);
+        } else {
+            showNotification(result.message, 'error');
+        }
+    } catch (error) {
+        showNotification('Lỗi hệ thống: ' + error.message, 'error');
+    }
+});
+
+        function getPaymentMethodName(method) {
+            const methods = {
+                'cod': 'Thanh toán khi nhận hàng',
+                'bank': 'Chuyển khoản ngân hàng',
+                'card': 'Thẻ quốc tế',
+                'momo': 'Ví MoMo'
+            };
+            return methods[method] || method;
+        }
+
+        // Load order summary on page load
+        loadOrderSummary();
+    </script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản Phẩm - QHBD Fashion</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="top-left">
+                        <span>Miễn phí vận chuyển cho đơn hàng trên 2.000.000₫</span>
+                    </div>
+                    <div class="top-right">
+                        <a href="#"><i class="fas fa-phone"></i> Hotline: 0988419285</a>
+                        <a href="#"><i class="fas fa-envelope"></i> thoitrang@qhbdfashion.vn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="index.html">QHBD</a>
+                    </div>
+                    <nav class="nav-menu">
+                        <ul>
+                            <li><a href="index.html">Trang Chủ</a></li>
+                            <li><a href="products.html?category=men">Nam</a></li>
+                            <li><a href="products.html?category=women">Nữ</a></li>
+                            <li><a href="products.html?category=accessories">Phụ Kiện</a></li>
+                            <li><a href="products.html?category=new">Hàng Mới</a></li>
+                            <li><a href="products.html?category=sale">Sale</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="header-actions">
+                        <div class="search-box">
+                            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+                            <button id="searchBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                        <a href="login.html" class="action-btn" id="userBtn">
+                            <i class="fas fa-user"></i>
+                            <span id="userName"></span>
+                        </a>
+                        <a href="cart.html" class="action-btn cart-btn">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Page -->
+    <section class="products-page">
+        <div class="container">
+            <div class="products-header">
+                <h1 id="pageTitle">Tất Cả Sản Phẩm</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Trang Chủ</a>
+                    <span>/</span>
+                    <span id="breadcrumbCategory">Sản Phẩm</span>
+                </div>
+            </div>
+
+            <div class="products-container">
+                <!-- Filters Sidebar -->
+                <aside class="filters">
+                    <div class="filter-group">
+                        <h3>Danh Mục</h3>
+                        <div class="filter-option">
+                            <input type="radio" name="category" value="all" id="cat-all" checked>
+                            <label for="cat-all">Tất Cả</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="radio" name="category" value="men" id="cat-men">
+                            <label for="cat-men">Thời Trang Nam</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="radio" name="category" value="women" id="cat-women">
+                            <label for="cat-women">Thời Trang Nữ</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="radio" name="category" value="accessories" id="cat-acc">
+                            <label for="cat-acc">Phụ Kiện</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Giá</h3>
+                        <div class="filter-option">
+                            <input type="radio" name="price" value="all" id="price-all" checked>
+                            <label for="price-all">Tất Cả</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="radio" name="price" value="0-500000" id="price-1">
+                            <label for="price-1">Dưới 500k</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="radio" name="price" value="500000-1000000" id="price-2">
+                            <label for="price-2">500k - 1tr</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="radio" name="price" value="1000000-2000000" id="price-3">
+                            <label for="price-3">1tr - 2tr</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="radio" name="price" value="2000000-99999999" id="price-4">
+                            <label for="price-4">Trên 2tr</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Trạng Thái</h3>
+                        <div class="filter-option">
+                            <input type="checkbox" id="filter-new" value="new">
+                            <label for="filter-new">Hàng Mới</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="filter-sale" value="sale">
+                            <label for="filter-sale">Đang Sale</label>
+                        </div>
+                    </div>
+
+                    <button class="btn-submit" onclick="applyFilters()" style="width: 100%; margin-top: 20px;">
+                        Áp Dụng Bộ Lọc
+                    </button>
+                </aside>
+
+                <!-- Products Grid -->
+                <div class="products-main">
+                    <div class="products-toolbar">
+                        <div class="products-count">
+                            <span id="productsCount">Đang tải...</span>
+                        </div>
+                        <div class="sort-options">
+                            <select id="sortSelect" onchange="applyFilters()">
+                                <option value="default">Sắp xếp mặc định</option>
+                                <option value="price-asc">Giá: Thấp đến Cao</option>
+                                <option value="price-desc">Giá: Cao đến Thấp</option>
+                                <option value="name">Tên: A-Z</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="products-grid" id="productsGrid">
+                        <p style="text-align: center; padding: 40px; color: #999;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 48px;"></i><br>
+                            Đang tải sản phẩm...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>QHBD Fashion</h3>
+                    <p>Thời trang cao cấp cho người thành đạt. Chúng tôi mang đến những sản phẩm chất lượng nhất với thiết kế tinh tế và sang trọng.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Thông Tin</h4>
+                    <ul>
+                        <li><a href="#">Về Chúng Tôi</a></li>
+                        <li><a href="#">Liên Hệ</a></li>
+                        <li><a href="#">Tuyển Dụng</a></li>
+                        <li><a href="#">Tin Tức</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ Trợ</h4>
+                    <ul>
+                        <li><a href="#">Chính Sách Đổi Trả</a></li>
+                        <li><a href="#">Hướng Dẫn Mua Hàng</a></li>
+                        <li><a href="#">Câu Hỏi Thường Gặp</a></li>
+                        <li><a href="#">Chính Sách Bảo Mật</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên Hệ</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 55 Đường Giải Phóng, Hoàng Mai, Hà Nội</li>
+                        <li><i class="fas fa-phone"></i> 0988419285</li>
+                        <li><i class="fas fa-envelope"></i>  thoitrang@qhbdfashion.vn</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 QHBD Fashion. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/api.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        console.log('🚀 Products page loaded');
+
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryParam = urlParams.get('category');
+        const searchParam = urlParams.get('search');
+
+        console.log('📍 URL Params:', { category: categoryParam, search: searchParam });
+
+        // Set initial filters from URL
+        if (categoryParam) {
+            const categoryInput = document.getElementById(`cat-${categoryParam}`);
+            if (categoryInput) {
+                categoryInput.checked = true;
+                console.log('✅ Set category:', categoryParam);
+            }
+            
+            // Update page title
+            const titles = {
+                'men': 'Thời Trang Nam',
+                'women': 'Thời Trang Nữ',
+                'accessories': 'Phụ Kiện',
+                'new': 'Hàng Mới',
+                'sale': 'Sale'
+            };
+            document.getElementById('pageTitle').textContent = titles[categoryParam] || 'Tất Cả Sản Phẩm';
+            document.getElementById('breadcrumbCategory').textContent = titles[categoryParam] || 'Sản Phẩm';
+        }
+
+        if (searchParam) {
+            document.getElementById('searchInput').value = searchParam;
+            document.getElementById('pageTitle').textContent = `Kết quả tìm kiếm: "${searchParam}"`;
+        }
+
+        // ⚠️ FIX: Đổi thành ASYNC function
+        async function applyFilters() {
+            console.log('🔍 Applying filters...');
+            
+            try {
+                const filters = {};
+                
+                // Category filter
+                const selectedCategory = document.querySelector('input[name="category"]:checked');
+                if (selectedCategory && selectedCategory.value !== 'all') {
+                    filters.category = selectedCategory.value;
+                }
+                
+                // Price filter
+                const selectedPrice = document.querySelector('input[name="price"]:checked');
+                if (selectedPrice && selectedPrice.value !== 'all') {
+                    const [min, max] = selectedPrice.value.split('-');
+                    filters.priceMin = parseInt(min);
+                    filters.priceMax = parseInt(max);
+                }
+                
+                // Badge filters
+                const badges = [];
+                if (document.getElementById('filter-new').checked) badges.push('new');
+                if (document.getElementById('filter-sale').checked) badges.push('sale');
+                if (badges.length > 0) {
+                    filters.badge = badges[0]; // API chỉ hỗ trợ 1 badge
+                }
+                
+                // Sort
+                const sortValue = document.getElementById('sortSelect').value;
+                if (sortValue !== 'default') {
+                    filters.sort = sortValue;
+                }
+                
+                // Search
+                if (searchParam) {
+                    filters.search = searchParam;
+                }
+                
+                console.log('🎯 Filters:', filters);
+                
+                // ✅ FIX: Thêm AWAIT vì getProducts là async
+                const products = await getProducts(filters);
+                
+                console.log('📦 Products received:', products.length);
+                console.log('📸 First product:', products[0]);
+                
+                // ✅ Render products với ảnh
+                renderProducts(products, 'productsGrid');
+                
+                // Update count
+                document.getElementById('productsCount').textContent = `${products.length} sản phẩm`;
+                
+                console.log('✅ Products rendered successfully');
+                
+            } catch (error) {
+                console.error('❌ Error loading products:', error);
+                
+                const container = document.getElementById('productsGrid');
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #e74c3c;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 48px; margin-bottom: 20px;"></i>
+                        <h3>Có lỗi xảy ra!</h3>
+                        <p>${error.message || 'Không thể tải sản phẩm'}</p>
+                        <button onclick="applyFilters()" class="btn-primary" style="margin-top: 20px;">
+                            <i class="fas fa-redo"></i> Thử Lại
+                        </button>
+                    </div>
+                `;
+                
+                document.getElementById('productsCount').textContent = '0 sản phẩm';
+            }
+        }
+
+        // Initial load when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 DOM loaded');
+            console.log('🔧 Checking functions...');
+            console.log('  - apiClient:', typeof apiClient);
+            console.log('  - getProducts:', typeof getProducts);
+            console.log('  - renderProducts:', typeof renderProducts);
+            
+            // Load products
+            applyFilters();
+        });
+
+        console.log('✅ Products page script loaded');
+    </script>
+</body>
+</html>

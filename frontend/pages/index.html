@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÉLITE Fashion - Thời Trang Cao Cấp</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="top-left">
+                        <span>Miễn phí vận chuyển cho đơn hàng trên 2.000.000₫</span>
+                    </div>
+                    <div class="top-right">
+                        <a href="#"><i class="fas fa-phone"></i> Hotline: 0988419285</a>
+                        <a href="#"><i class="fas fa-envelope"></i> thoitrang@qhbdfashion.vn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="index.html">QHBD</a>
+                    </div>
+
+                    <nav class="nav-menu">
+                        <ul>
+                            <li><a href="index.html" class="active">Trang Chủ</a></li>
+                            <li><a href="products.html?category=men">Nam</a></li>
+                            <li><a href="products.html?category=women">Nữ</a></li>
+                            <li><a href="products.html?category=accessories">Phụ Kiện</a></li>
+                            <li><a href="products.html?category=new">Hàng Mới</a></li>
+                            <li><a href="products.html?category=sale">Sale</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="header-actions">
+                        <div class="search-box">
+                            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+                            <button id="searchBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                        <a href="login.html" class="action-btn" id="userBtn">
+                            <i class="fas fa-user"></i>
+                            <span id="userName"></span>
+                        </a>
+                        <a href="cart.html" class="action-btn cart-btn">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section class="hero-slider">
+        <div class="slider-container">
+            <div class="slide active">
+                <div class="slide-content">
+                    <h1>Bộ Sưu Tập Mùa Đông 2024</h1>
+                    <p>Khám phá phong cách thời trang tinh tế và sang trọng</p>
+                    <a href="products.html?category=new" class="btn-primary">Mua Ngay</a>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-content">
+                    <h1>Giảm Giá Đến 50%</h1>
+                    <p>Cơ hội sở hữu thời trang cao cấp với giá ưu đãi</p>
+                    <a href="products.html?category=sale" class="btn-primary">Khám Phá</a>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-content">
+                    <h1>Phong Cách Doanh Nhân</h1>
+                    <p>Tự tin và chuyên nghiệp trong mọi dịp</p>
+                    <a href="products.html?category=men" class="btn-primary">Xem Thêm</a>
+                </div>
+            </div>
+        </div>
+        <button class="slider-btn prev" onclick="changeSlide(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="slider-btn next" onclick="changeSlide(1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Danh Mục Sản Phẩm</h2>
+            <div class="category-grid">
+                <a href="products.html?category=men" class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Thời Trang Nam</h3>
+                    <p>Phong cách lịch lãm</p>
+                </a>
+                <a href="products.html?category=women" class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <h3>Thời Trang Nữ</h3>
+                    <p>Sang trọng & quyến rũ</p>
+                </a>
+                <a href="products.html?category=accessories" class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Phụ Kiện</h3>
+                    <p>Hoàn thiện phong cách</p>
+                </a>
+                <a href="products.html?category=sale" class="category-card sale">
+                    <div class="category-image">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h3>Sale</h3>
+                    <p>Giảm đến 50%</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title">Sản Phẩm Nổi Bật</h2>
+            <div class="products-grid" id="featuredProducts">
+                <p style="text-align: center; padding: 40px; color: #999;">Đang tải sản phẩm...</p>
+            </div>
+            <div class="text-center">
+                <a href="products.html" class="btn-secondary">Xem Tất Cả Sản Phẩm</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>Miễn Phí Vận Chuyển</h3>
+                    <p>Cho đơn hàng trên 2 triệu</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-undo"></i>
+                    <h3>Đổi Trả Dễ Dàng</h3>
+                    <p>Trong vòng 30 ngày</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Thanh Toán An Toàn</h3>
+                    <p>Bảo mật 100%</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-headset"></i>
+                    <h3>Hỗ Trợ 24/7</h3>
+                    <p>Tư vấn nhiệt tình</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>QHBD Fashion</h3>
+                    <p>Thời trang cao cấp cho người thành đạt.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Thông Tin</h4>
+                    <ul>
+                        <li><a href="#">Về Chúng Tôi</a></li>
+                        <li><a href="#">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ Trợ</h4>
+                    <ul>
+                        <li><a href="#">Chính Sách Đổi Trả</a></li>
+                        <li><a href="#">Hướng Dẫn Mua Hàng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên Hệ</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 0988419285</li>
+                        <li><i class="fas fa-envelope"></i> thoitrang@qhbdfashion.vn</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 QHBD Fashion. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/api.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+</html>
